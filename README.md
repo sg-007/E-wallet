@@ -17,7 +17,7 @@ The ePay Wallet Payment Application aims to provide a robust and user-friendly p
 
 Dataset In the E-Wallet Payment Application context, the term "dataset" may refer to the collection of data used within the system for various purposes, such as storing information about bank accounts, beneficiaries, bill payments, customers, sessions, and transactions. Here's an elaboration on the dataset used in the system: ->Bank Account Data ->Beneficiary Dataset ->Bill Payment Dataset ->Customer Dataset ->Customer Session Dataset ->Transaction Dataset Dataset in the E-Wallet Payment Application plays a crucial role in storing, organising, and managing various data types essential for system functionality, user interactions, and financial transactions. It forms the backbone of the system's information architecture and enables seamless operation and user experience.
 
-------->Model Description<------------ In the context of the E-Wallet Payment Application, the "Model Description" typically refers to the structure and composition of the data models used to represent various entities within the system. Here's an elaboration on the model description:
+Model Description - In the context of the E-Wallet Payment Application, the "Model Description" typically refers to the structure and composition of the data models used to represent various entities within the system. Here's an elaboration on the model description:
 
 ->Bank Account Model The Bank Account model represents individual bank accounts linked to the e-wallets. It includes attributes such as account number, IFSC code, bank name, and balance. This model enables the system to manage users' financial accounts, facilitating fund transfers and balance inquiries.
 
