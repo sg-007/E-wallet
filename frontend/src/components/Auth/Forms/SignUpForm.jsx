@@ -36,7 +36,7 @@ const SignUpForm = ({ switchToLoginForm, switchToRegistration, updateSignUpData 
         return;
       }
       if (!otp) {
-        setErrorMessageOTP('please enter the OTP');
+        setErrorMessageOTP('please enter OTP');
         return;
       }
       if(otp === localStorage.getItem('otp')){

@@ -101,7 +101,7 @@ const RegistrationForm = ({ signUpData, switchToLoginForm }) => {
       return;
     }
     if (registrationData.password !== confirmPassword){
-      setErrorMessage('Password feilds do not match');
+      setErrorMessage('Password fields do not match');
       return;
     }
     if (validateDate(registrationData.dob)){

@@ -35,7 +35,7 @@ const KycForm = (props) => {
         return;
       }
       if (!isNaN(parseInt(adharNumber)) && adharNumber.length === 12) { 
-        setErrorMessage("Dont act Smart")
+        setErrorMessage("Don't act Smart")
         return;
       }
       const kyc = localStorage.getItem("kyc")

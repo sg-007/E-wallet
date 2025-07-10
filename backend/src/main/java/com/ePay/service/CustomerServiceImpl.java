@@ -2,7 +2,9 @@ package com.ePay.service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +19,6 @@ import com.ePay.model.DTO.WalletDTO;
 import com.ePay.repository.CustomerDao;
 import com.ePay.repository.CustomerSessionDao;
 
-//import net.bytebuddy.asm.Advice.Return;
-import net.bytebuddy.utility.RandomString;
-
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -33,13 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public String checkCustomer(CustomerOtpDTO customerOTP) {
 		Customer existingCustomer = cDao.findByMobileNumber(customerOTP.getMobileNumber());
 		if (existingCustomer != null) {
-			// send otp
-			String randomString = String.valueOf((int) (Math.random() * 10000));
-			return randomString;
+            return String.valueOf((int) (Math.random() * 10000));
 		} else {
 			throw new CustomerException("Customer not registered, try Signing in");
 		}
-
 	}
 
 	@Override
@@ -47,9 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Optional<Customer> existingCustomerOptional = Optional
 				.ofNullable(cDao.findByMobileNumber(customerOTP.getMobileNumber()));
 		if (existingCustomerOptional.isEmpty()) {
-			// send otp
-			String randomString = String.valueOf((int) (Math.random() * 10000));
-			return randomString;
+            return String.valueOf((int) (Math.random() * 10000));
 		} else {
 			throw new CustomerException("Customer already registered, try Logging in");
 		}
@@ -68,23 +62,37 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String customerLogin(CustomerLoginDTO customerDto) {
-		Customer customer = cDao.findByMobileNumberAndPassword(customerDto.getMobileNumber(),
-				customerDto.getPassword());
+		String mobileNumber = customerDto.getMobileNumber();
+		String password = customerDto.getPassword();
 
-		if (customer != null) {
-			CustomerSession cs = new CustomerSession();
-			cs.setCustomerId(customer.getCustomerId());
-			cs.setTimeStamp(LocalDateTime.now());
-			// to generate new session id when user login successfully
-			String key = RandomString.make(8);
-			cs.setUniqueId(key);
-
-			CustomerSession cSession = csDao.save(cs);
-			return cSession.toString();
-
-		} else {
+		// Step 1: Find the customer
+		Customer customer = cDao.findByMobileNumber(mobileNumber);
+		if (customer == null) {
 			throw new CustomerException("Wrong credentials");
 		}
+
+		// Step 2: Check and remove existing session (if any)
+		CustomerSession existingSession = csDao.findByCustomerId(customer.getCustomerId());
+		if (existingSession != null) {
+			csDao.delete(existingSession);
+		}
+
+		// Step 3: Validate password
+		String stored = customer.getPassword();
+		String input = String.valueOf(password.hashCode());
+
+		if (!stored.equals(input)) {
+			throw new CustomerException("Wrong credentials");
+		}
+
+		// Step 4: Create new session
+		CustomerSession cs = new CustomerSession();
+		cs.setCustomerId(customer.getCustomerId());
+		cs.setTimeStamp(LocalDateTime.now());
+		cs.setUniqueId(UUID.randomUUID().toString());
+
+		CustomerSession cSession = csDao.save(cs);
+		return cSession.toString();
 	}
 
 	public String updateCustomerPassword(CustomerLoginDTO customerDto) {
@@ -114,13 +122,9 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public CustomerSession checkCustomerSession(String uniqueId) {
 		System.out.println(uniqueId);
-		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
-		if (cSession != null) {
-			return cSession;
-		} else {
-			return null;
-		}
+        return csDao.findByUniqueId(uniqueId);
 	}
+
 //	@Override
 //	public CustomerDTO viewCustomerDetails(String uniqueId) {
 //	    CustomerSession cSession = csDao.findByUniqueId(uniqueId);

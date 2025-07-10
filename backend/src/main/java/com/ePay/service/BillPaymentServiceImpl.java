@@ -79,7 +79,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 			Customer customer = opt.get();
 			Wallet wallet = customer.getWallet();
 			List<BillPayment> bills = bDao.findByWallet(wallet);
-			if (bills.size() != 0) {
+			if (!bills.isEmpty()) {
 				return bills;
 			} else {
 				throw new CustomerException("no bill found for this user");

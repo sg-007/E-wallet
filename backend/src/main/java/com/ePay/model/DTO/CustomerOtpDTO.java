@@ -10,12 +10,4 @@ import lombok.Setter;
 public class CustomerOtpDTO {
 
 	private String mobileNumber;
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
 }

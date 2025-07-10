@@ -3,6 +3,8 @@ package com.ePay.service;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,12 +62,12 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 				return beneficiaries;
 
 			} else {
-				throw new BeneficiaryException("No benebficiary yet");
+				throw new BeneficiaryException("No beneficiary yet");
 			}
 
 		}
 		{
-			throw new CustomerException("customer is not logged in with given sourceMobileNo");
+			throw new CustomerException("customer is not logged in with given source mobile no.");
 		}
 
 	}
@@ -85,7 +87,7 @@ public class BeneficiaryServiceImpl implements BeneficiaryService {
 
 		}
 		{
-			throw new CustomerException("customer is not logged in with given sourceMobileNo");
+			throw new CustomerException("customer is not logged in with given source mobile no.");
 		}
 
 	}

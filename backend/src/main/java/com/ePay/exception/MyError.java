@@ -7,39 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MyError {
 
 	private LocalDateTime timeStamp;
 
 	private String message;
 
-	public String getMessage() {
-		return message;
-	}
+    private String details;
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getDetails() {
-		return details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
-	private String details;
-
-	public LocalDateTime getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(LocalDateTime timeStamp) {
-		this.timeStamp = timeStamp;
-	}
 }

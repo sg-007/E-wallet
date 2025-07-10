@@ -22,5 +22,4 @@ public class CustomerRegistrationDTO {
 
 	private WalletDTO wallet;
 	private String password;
-
 }

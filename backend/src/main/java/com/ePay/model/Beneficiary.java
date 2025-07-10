@@ -1,26 +1,18 @@
 package com.ePay.model;
 
-import javax.persistence.CascadeType;
-//import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Entity
 @Data
-@Getter
-@Setter
-@ToString
+@Entity
 public class Beneficiary {
 
 	@Id
@@ -32,13 +24,6 @@ public class Beneficiary {
 
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.DETACH)
-	@JoinColumn(name = "cusomerId")
+	@JoinColumn(name = "customerId")
 	private Customer customer;
-
-	public void setCustomer(Customer existingCustomer) {
-		this.customer = existingCustomer;
-	}
-
-	// {"name":"rajan","mobileNo":"9999999999","relationWithCustomer":"Father"}
-
 }

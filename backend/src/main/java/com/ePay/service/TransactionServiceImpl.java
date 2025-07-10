@@ -58,17 +58,16 @@ public class TransactionServiceImpl implements TransactionService {
 			Customer customer = opt.get();
 			Wallet wallet = customer.getWallet();
 
-			List<Transaction> transactios = tDao.findByWallet(wallet);
-			if (transactios.size() == 0) {
-				throw new CustomerException("no transactio found");
+			List<Transaction> transactions = tDao.findByWallet(wallet);
+			if (transactions.isEmpty()) {
+				throw new CustomerException("no transaction found");
 			} else {
-				return transactios;
+				return transactions;
 			}
 
 		} else {
 			throw new CustomerException("User not logged in!");
 		}
-
 	}
 
 //
@@ -86,11 +85,11 @@ public class TransactionServiceImpl implements TransactionService {
 		CustomerSession cSession = csDao.findByUniqueId(uniqueId);
 		if (cSession != null) {
 
-			List<Transaction> transactios = tDao.findByTransactionType(type);
-			if (transactios.size() == 0) {
-				throw new CustomerException("no transactio found with this type!");
+			List<Transaction> transactions = tDao.findByTransactionType(type);
+			if (transactions.isEmpty()) {
+				throw new CustomerException("no transaction found with this type!");
 			} else {
-				return transactios;
+				return transactions;
 			}
 
 		} else {

@@ -36,7 +36,7 @@ function Cards() {
           <ul className='cards__items'>
             <CardItem
               src='images/benificary.png'
-              text='ADD BENIFICARY '               
+              text='ADD BENIFICIARY '               
               // label='KYC AND ADD BENIFICARY'
               path='/add-benificary'
             />

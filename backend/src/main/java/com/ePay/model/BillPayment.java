@@ -2,27 +2,14 @@ package com.ePay.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
-@ToString
+@Data
 public class BillPayment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

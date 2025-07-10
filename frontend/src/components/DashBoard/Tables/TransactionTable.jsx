@@ -5,7 +5,7 @@ import axios from '../../../services/API/axios';
 const TransactionTable = () => {
   const [trans, setTrans] = useState([]);
   useEffect(()=>{
-    document.title="All Your Transaction"
+    document.title="All Your Transactions"
   },[]);
 
   const AllTrans = () =>{
@@ -39,7 +39,7 @@ const TransactionTable = () => {
   }
   return (
     <div>
-    <h1 className='subheading'>TRANSACTIONS HISTORY</h1>
+    <h1 className='subheading'>TRANSACTION HISTORY</h1>
     <table className='table-container custom-table'> 
       <tr>
         <th>TransactionId</th>

@@ -9,5 +9,4 @@ class EPayApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

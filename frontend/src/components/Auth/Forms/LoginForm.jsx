@@ -9,17 +9,16 @@ const LoginForm = ({ switchToForgotPassword, switchToSignUp }) => {
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    function softHash(inputString) {
-      let hash = 0;
-      for (let i = 0; i < inputString.length; i++) {
-        hash = (hash << 5) - hash + inputString.charCodeAt(i);
-        hash |= 0;
-      }
-      let hashString = hash.toString();
-      hashString = hashString.slice(0, 15);
-    
-      return hashString;
-    }
+    // function softHash(inputString) {
+    //   let hash = 0;
+    //   for (let i = 0; i < inputString.length; i++) {
+    //     hash = (hash << 5) - hash + inputString.charCodeAt(i);
+    //     hash |= 0;
+    //   }
+    //   let hashString = hash.toString();
+    //   hashString = hashString.slice(0, 15);
+    //   return hashString;
+    // }
 
     const handleMobileNumberChange = (e) => {
       setMobileNumber(e.target.value);
@@ -40,12 +39,10 @@ const LoginForm = ({ switchToForgotPassword, switchToSignUp }) => {
       }
       e.preventDefault();
       try {
-        await AuthService.loginUser(mobileNumber, softHash(password));
+        await AuthService.loginUser(mobileNumber, password);
         const uniqueId = localStorage.getItem('uniqueId');
         console.log(uniqueId);
-
-        // make sure to log out befofe asking for new session
-
+        // make sure to log out before asking for new session
         navigate('/dashboard');
       } catch (error) {
         setErrorMessage('Invalid mobile number or password. Please try again.');

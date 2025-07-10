@@ -13,8 +13,9 @@ const AuthService = {
         // Store the uniqueId in local storage for further authentication or session management
         localStorage.setItem('uniqueId', uniqueId); 
         localStorage.setItem('mobileNumber', mobileNumber);
+        console.log(uniqueId + " " + mobileNumber);
         }
-      return response;
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -31,7 +32,7 @@ const AuthService = {
         alert("Logout failed. Please try again later.")
     }
 },
-  signinUser: async (mobileNumber) => {
+  signinUser: async (mobileNumber) => {   
     try {
       const response = await axios.post("/signUp", {
         mobileNumber,

@@ -83,7 +83,7 @@ const ContactUs = () => {
                 className="fas fa-map-marker-alt"
                 style={{ color: "green", fontSize: "24px" }}
               ></i>
-              <span>ePay,Pune,Mahrashtra</span>
+              <span>ePay - Pune, Maharashtra</span>
             </div>
             <div className='map-section '>
         <iframe

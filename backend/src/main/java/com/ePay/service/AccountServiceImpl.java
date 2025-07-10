@@ -111,7 +111,7 @@ public class AccountServiceImpl implements AccountService {
 				List<BankAccount> banks = opt.get().getBanks();
 				return banks;
 			} else {
-				throw new CustomerException("Wronge wallet id");
+				throw new CustomerException("Wrong wallet id");
 			}
 		} else {
 			throw new CustomerException("Customer not logged in");

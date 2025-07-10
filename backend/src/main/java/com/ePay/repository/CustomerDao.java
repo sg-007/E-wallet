@@ -9,6 +9,4 @@ import com.ePay.model.Customer;
 public interface CustomerDao extends JpaRepository<Customer, Integer> {
 	public Customer findByMobileNumber(String mobileNumber);
 
-	public Customer findByMobileNumberAndPassword(String mobileNumber, String password);
-
 }

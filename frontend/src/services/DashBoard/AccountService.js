@@ -13,12 +13,6 @@ const AccountService = {
         throw error;
       });
     }
-    
-    
-  
-
-  
-
 };
 
 export default AccountService;

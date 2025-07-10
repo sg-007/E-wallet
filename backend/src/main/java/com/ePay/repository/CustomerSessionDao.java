@@ -9,4 +9,6 @@ import com.ePay.model.CustomerSession;
 public interface CustomerSessionDao extends JpaRepository<CustomerSession, Integer> {
 
 	public CustomerSession findByUniqueId(String UniqueId);
+
+	public CustomerSession findByCustomerId(Integer customerId);
 }

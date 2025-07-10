@@ -8,5 +8,5 @@ import com.ePay.model.BillPayment;
 import com.ePay.model.Wallet;
 
 public interface BillPaymentDao extends JpaRepository<BillPayment, Integer> {
-	public List<BillPayment> findByWallet(Wallet wallet);
+	List<BillPayment> findByWallet(Wallet wallet);
 }
