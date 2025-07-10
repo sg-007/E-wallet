@@ -1,0 +1,48 @@
+# OS-specific
+.DS_Store
+Thumbs.db
+
+.vscode/
+
+# Maven
+backend/.idea/
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Build & logs
+*.log
+
+# Spring specific
+backend/.springBeans
+
+# Environment files
+.env
+*.env
+**/.env
+**/.env.local
+
+# Node.js
+frontend/node_modules/
+frontend/.next/
+frontend/build/
+frontend/dist/
+
+# System metadata folders
+backend/.metadata/
+
+# Docker
+**/Dockerfile
+docker-compose.yml
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# By convention
+README.md
+
+wait-for-mysql.sh
